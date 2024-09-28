@@ -1,0 +1,3 @@
+[submodule "Insights"]
+	path = Insights
+	url = https://github.com/InsightsPlugin/Insights

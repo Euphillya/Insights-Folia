@@ -1,0 +1,123 @@
+From 8fb45cfde036506d2ac94bcba127dc5c2734e579 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Sat, 28 Sep 2024 18:11:42 +0200
+Subject: [PATCH 3/3] Fix for use on Folia
+
+---
+ .../api/concurrent/count/TickResetCount.java  |  2 +-
+ .../notifications/BossBarNotification.java    |  2 +-
+ .../insights/api/tasks/ScanTask.java          |  7 +++---
+ Insights-NMS/Current/build.gradle.kts         |  1 +
+ .../insights/nms/impl/InsightsNMSImpl.java    | 22 +++++++++++--------
+ .../dev/frankheijden/insights/Insights.java   |  2 +-
+ 6 files changed, 21 insertions(+), 15 deletions(-)
+
+diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java
+index 8847302..fb77f4d 100644
+--- a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java
++++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java
+@@ -1,7 +1,7 @@
+ package dev.frankheijden.insights.api.concurrent.count;
+ 
+ import dev.frankheijden.insights.api.InsightsPlugin;
+-import org.bukkit.scheduler.BukkitTask;
++//import org.bukkit.scheduler.BukkitTask;
+ import java.util.Map;
+ import java.util.concurrent.ConcurrentHashMap;
+ 
+diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/config/notifications/BossBarNotification.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/config/notifications/BossBarNotification.java
+index 6bcd616..999bc85 100644
+--- a/Insights-API/src/main/java/dev/frankheijden/insights/api/config/notifications/BossBarNotification.java
++++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/config/notifications/BossBarNotification.java
+@@ -7,7 +7,7 @@ import net.kyori.adventure.bossbar.BossBar;
+ import net.kyori.adventure.text.Component;
+ import org.bukkit.Bukkit;
+ import org.bukkit.entity.Player;
+-import org.bukkit.scheduler.BukkitTask;
++//import org.bukkit.scheduler.BukkitTask;
+ import java.util.LinkedList;
+ import java.util.Queue;
+ 
+diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/tasks/ScanTask.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/tasks/ScanTask.java
+index f8f178e..07ce1aa 100644
+--- a/Insights-API/src/main/java/dev/frankheijden/insights/api/tasks/ScanTask.java
++++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/tasks/ScanTask.java
+@@ -15,8 +15,8 @@ import dev.frankheijden.insights.api.utils.EnumUtils;
+ import dev.frankheijden.insights.api.utils.StringUtils;
+ import net.kyori.adventure.text.Component;
+ import org.bukkit.entity.Player;
+-import org.bukkit.scheduler.BukkitScheduler;
+-import org.bukkit.scheduler.BukkitTask;
++//import org.bukkit.scheduler.BukkitScheduler;
++//import org.bukkit.scheduler.BukkitTask;
+ import java.time.Duration;
+ import java.util.Comparator;
+ import java.util.Iterator;
+@@ -370,7 +370,8 @@ public class ScanTask<R> implements Runnable {
+     }
+ 
+     private void start() {
+-        io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler scheduler = plugin.getServer().getGlobalRegionScheduler();
++        io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler scheduler =
++                plugin.getServer().getGlobalRegionScheduler();
+         task = scheduler.runAtFixedRate(plugin, scheduledTask -> this.run(), 1,
+                 plugin.getSettings().SCANS_ITERATION_INTERVAL_TICKS);
+     }
+diff --git a/Insights-NMS/Current/build.gradle.kts b/Insights-NMS/Current/build.gradle.kts
+index 629ba5a..758789e 100644
+--- a/Insights-NMS/Current/build.gradle.kts
++++ b/Insights-NMS/Current/build.gradle.kts
+@@ -1,3 +1,4 @@
+ dependencies {
+     paperweight.paperDevBundle("1.21-R0.1-SNAPSHOT")
++    compileOnly(project(":Insights-API"))
+ }
+diff --git a/Insights-NMS/Current/src/main/java/dev/frankheijden/insights/nms/impl/InsightsNMSImpl.java b/Insights-NMS/Current/src/main/java/dev/frankheijden/insights/nms/impl/InsightsNMSImpl.java
+index bdb8e69..e5d4820 100644
+--- a/Insights-NMS/Current/src/main/java/dev/frankheijden/insights/nms/impl/InsightsNMSImpl.java
++++ b/Insights-NMS/Current/src/main/java/dev/frankheijden/insights/nms/impl/InsightsNMSImpl.java
+@@ -106,15 +106,19 @@ public class InsightsNMSImpl extends InsightsNMS {
+ 
+     @Override
+     public void getLoadedChunkEntities(Chunk chunk, Consumer<ChunkEntity> entityConsumer) {
+-        for (org.bukkit.entity.Entity bukkitEntity : chunk.getEntities()) {
+-            Entity entity = ((CraftEntity) bukkitEntity).getHandle();
+-            entityConsumer.accept(new ChunkEntity(
+-                    bukkitEntity.getType(),
+-                    entity.getBlockX(),
+-                    entity.getBlockY(),
+-                    entity.getBlockZ()
+-            ));
+-        }
++        org.bukkit.Bukkit.getRegionScheduler()
++                .execute(dev.frankheijden.insights.api.InsightsPlugin.getInstance(),
++                        chunk.getWorld(), chunk.getX(), chunk.getZ(), () -> {
++                            for (org.bukkit.entity.Entity bukkitEntity : chunk.getEntities()) {
++                                Entity entity = ((CraftEntity) bukkitEntity).getHandle();
++                                entityConsumer.accept(new ChunkEntity(
++                                        bukkitEntity.getType(),
++                                        entity.getBlockX(),
++                                        entity.getBlockY(),
++                                        entity.getBlockZ()
++                                ));
++                            }
++                        });
+     }
+ 
+     @Override
+diff --git a/Insights/src/main/java/dev/frankheijden/insights/Insights.java b/Insights/src/main/java/dev/frankheijden/insights/Insights.java
+index b130732..cffb34a 100644
+--- a/Insights/src/main/java/dev/frankheijden/insights/Insights.java
++++ b/Insights/src/main/java/dev/frankheijden/insights/Insights.java
+@@ -47,7 +47,7 @@ import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+ import org.bukkit.Bukkit;
+ import org.bukkit.World;
+ import org.bukkit.command.CommandSender;
+-import org.bukkit.scheduler.BukkitTask;
++//import org.bukkit.scheduler.BukkitTask;
+ import org.incendo.cloud.annotations.AnnotationParser;
+ import org.incendo.cloud.execution.ExecutionCoordinator;
+ import org.incendo.cloud.paper.PaperCommandManager;
+-- 
+2.45.1.windows.1
+
