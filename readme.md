@@ -1,4 +1,4 @@
-# Essentials-Folia
+# Insights-Folia
 
 This repository is a fork of [Insights](https://github.com/InsightsPlugin/Insights) specifically modified to work with Folia. The main difference lies in the use of a patch file to apply the necessary changes. This guide will explain how to set up, use, and maintain this fork.
 
