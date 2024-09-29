@@ -1,7 +1,7 @@
 From 8c3db4e0f3ee9396fd5a5b1d2a30658c53da5ddc Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
 Date: Sat, 28 Sep 2024 18:30:01 +0200
-Subject: [PATCH 3/3] Fix for use on Folia
+Subject: [PATCH 3/4] Fix for use on Folia
 
 ---
  .../api/concurrent/count/TickResetCount.java  |  2 +-
