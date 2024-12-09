@@ -1,7 +1,7 @@
 From 9635d66988a8fbbfbe3da6682239afc71592321d Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
 Date: Mon, 9 Dec 2024 14:08:23 +0100
-Subject: [PATCH 4/4] Fix piston push
+Subject: [PATCH 4/5] Fix piston push
 
 ---
  .../insights/listeners/BlockListener.java           | 13 ++++++++-----

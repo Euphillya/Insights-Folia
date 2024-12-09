@@ -1,7 +1,7 @@
 From 5126eda91465965fb17815554df07986bd7b3ed5 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
 Date: Mon, 9 Dec 2024 14:08:22 +0100
-Subject: [PATCH 1/4] Add Folia Supported plugin.yml
+Subject: [PATCH 1/5] Add Folia Supported plugin.yml
 
 ---
  Insights/build.gradle.kts | 1 +
