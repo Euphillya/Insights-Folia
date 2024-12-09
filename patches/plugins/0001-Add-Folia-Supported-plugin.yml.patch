@@ -1,12 +1,11 @@
-From cde9565dd1755a727db4488f775b241e5f065bcf Mon Sep 17 00:00:00 2001
+From 5126eda91465965fb17815554df07986bd7b3ed5 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sat, 28 Sep 2024 18:30:01 +0200
+Date: Mon, 9 Dec 2024 14:08:22 +0100
 Subject: [PATCH 1/4] Add Folia Supported plugin.yml
 
 ---
  Insights/build.gradle.kts | 1 +
- gradle/libs.versions.toml | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ 1 file changed, 1 insertion(+)
 
 diff --git a/Insights/build.gradle.kts b/Insights/build.gradle.kts
 index a4387ce..bfe41c8 100644
@@ -20,19 +19,6 @@ index a4387ce..bfe41c8 100644
      permissions {
          register("insights.info") {
              description = "Allows you to see information about insights"
-diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
-index a6cb0ba..24e5e08 100644
---- a/gradle/libs.versions.toml
-+++ b/gradle/libs.versions.toml
-@@ -10,7 +10,7 @@ assertj = "3.23.1"
- mockito = "4.11.0"
- jupiter = "5.9.1"
- brigadier = "1.0.18"
--placeholderapi = "2.11.4"
-+placeholderapi = "2.11.6"
- commodore = "2.2"
- cloudPaper = "2.0.0-beta.9"
- cloud = "2.0.0-rc.2"
 -- 
-2.45.1.windows.1
+2.47.1.windows.1
 
