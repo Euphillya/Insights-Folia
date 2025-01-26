@@ -1,7 +1,7 @@
-From 5b7e0c3d6d9ec46b7ddad7e51eb88969482d45a6 Mon Sep 17 00:00:00 2001
+From e90a1a174b78b4d6b4987893281821be979a7041 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Mon, 9 Dec 2024 14:08:23 +0100
-Subject: [PATCH 3/5] Fix for use on Folia
+Date: Sun, 26 Jan 2025 13:05:43 +0100
+Subject: [PATCH 4/6] Fix for use on Folia
 
 ---
  .../api/concurrent/count/TickResetCount.java  |  2 +-
@@ -64,12 +64,12 @@ index f8f178e..07ce1aa 100644
                  plugin.getSettings().SCANS_ITERATION_INTERVAL_TICKS);
      }
 diff --git a/Insights-NMS/Current/build.gradle.kts b/Insights-NMS/Current/build.gradle.kts
-index e127372..6d63432 100644
+index 72bd78b..6424cdd 100644
 --- a/Insights-NMS/Current/build.gradle.kts
 +++ b/Insights-NMS/Current/build.gradle.kts
 @@ -1,3 +1,4 @@
  dependencies {
-     paperweight.paperDevBundle("1.21.3-R0.1-SNAPSHOT")
+     paperweight.paperDevBundle("1.21.4-R0.1-SNAPSHOT")
 +    compileOnly(project(":Insights-API"))
  }
 diff --git a/Insights-NMS/Current/src/main/java/dev/frankheijden/insights/nms/impl/InsightsNMSImpl.java b/Insights-NMS/Current/src/main/java/dev/frankheijden/insights/nms/impl/InsightsNMSImpl.java
@@ -119,5 +119,5 @@ index b130732..cffb34a 100644
  import org.incendo.cloud.execution.ExecutionCoordinator;
  import org.incendo.cloud.paper.PaperCommandManager;
 -- 
-2.47.1.windows.1
+2.47.1.windows.2
 

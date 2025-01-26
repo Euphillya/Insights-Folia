@@ -1,0 +1,57 @@
+From 345fd7ebed26c8271d770f376ad9bfbd3bf10605 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Sun, 26 Jan 2025 13:05:44 +0100
+Subject: [PATCH 6/6] Fix scheduler
+
+---
+ .../insights/tasks/PlayerTrackerTask.java     | 33 ++++++++++---------
+ 1 file changed, 17 insertions(+), 16 deletions(-)
+
+diff --git a/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java b/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
+index 871003a..9e73126 100644
+--- a/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
++++ b/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
+@@ -52,23 +52,24 @@ public class PlayerTrackerTask extends InsightsAsyncTask {
+                 var world = loc.getWorld();
+                 if (world.isChunkLoaded(loc.getX(), loc.getZ())) {
+                     this.scanLocations.put(loc, now);
+-
+-                    var chunk = world.getChunkAt(loc.getX(), loc.getZ());
+-                    plugin.getChunkContainerExecutor().submit(chunk, ScanOptions.all()).whenComplete((s, e) -> {
+-                        if (s == null) {
+-                            int hash = e.getStackTrace()[0].hashCode();
+-                            if (!knownErrorStackTraceHashes.contains(hash)) {
+-                                knownErrorStackTraceHashes.add(hash);
+-                                plugin.getLogger().log(
+-                                        Level.SEVERE,
+-                                        "Error occurred while scanning "
+-                                                + loc
+-                                                + " (future errors with the same stacktrace are suppressed)",
+-                                        e
+-                                );
++                    org.bukkit.Bukkit.getRegionScheduler().execute(plugin, world, loc.getX(), loc.getZ(), () -> {
++                        var chunk = world.getChunkAt(loc.getX(), loc.getZ());
++                        plugin.getChunkContainerExecutor().submit(chunk, ScanOptions.all()).whenComplete((s, e) -> {
++                            if (s == null) {
++                                int hash = e.getStackTrace()[0].hashCode();
++                                if (!knownErrorStackTraceHashes.contains(hash)) {
++                                    knownErrorStackTraceHashes.add(hash);
++                                    plugin.getLogger().log(
++                                            Level.SEVERE,
++                                            "Error occurred while scanning "
++                                                    + loc
++                                                    + " (future errors with the same stacktrace are suppressed)",
++                                            e
++                                    );
++                                }
+                             }
+-                        }
+-                        this.scanLocations.remove(loc);
++                            this.scanLocations.remove(loc);
++                        });
+                     });
+                 }
+             }
+-- 
+2.47.1.windows.2
+
