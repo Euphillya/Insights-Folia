@@ -1,6 +1,6 @@
-From e90a1a174b78b4d6b4987893281821be979a7041 Mon Sep 17 00:00:00 2001
+From 01f7391627ec1280bf08c761edb15a24417fedff Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sun, 26 Jan 2025 13:05:43 +0100
+Date: Sun, 26 Jan 2025 13:12:55 +0100
 Subject: [PATCH 4/6] Fix for use on Folia
 
 ---
