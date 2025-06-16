@@ -41,7 +41,7 @@ jobs:
     - name: Execute Gradle build
       run: |
         cd Insights-Patchs
-        ./gradlew build --stacktrace
+        ./gradlew shadowJar --stacktrace
 
     - uses: actions/upload-artifact@v4
       name: Archive Reports
