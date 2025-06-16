@@ -1,7 +1,7 @@
-From 01f7391627ec1280bf08c761edb15a24417fedff Mon Sep 17 00:00:00 2001
+From 52f929d6cd33411d79b638b4a8b8b13a29902b57 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sun, 26 Jan 2025 13:12:55 +0100
-Subject: [PATCH 4/6] Fix for use on Folia
+Date: Mon, 16 Jun 2025 03:21:14 +0200
+Subject: [PATCH 4/9] Fix for use on Folia
 
 ---
  .../api/concurrent/count/TickResetCount.java  |  2 +-
@@ -119,5 +119,5 @@ index b130732..cffb34a 100644
  import org.incendo.cloud.execution.ExecutionCoordinator;
  import org.incendo.cloud.paper.PaperCommandManager;
 -- 
-2.47.1.windows.2
+2.49.0.windows.1
 

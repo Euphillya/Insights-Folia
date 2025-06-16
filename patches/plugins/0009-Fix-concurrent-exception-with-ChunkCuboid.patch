@@ -1,0 +1,25 @@
+From ecaf0910b5cf15d8569a5634a4e53746c3980c97 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Mon, 16 Jun 2025 03:26:59 +0200
+Subject: [PATCH 9/9] Fix concurrent exception with ChunkCuboid
+
+---
+ .../frankheijden/insights/api/objects/chunk/ChunkCuboid.java    | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/objects/chunk/ChunkCuboid.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/objects/chunk/ChunkCuboid.java
+index 4eeba9b..e42bb3c 100644
+--- a/Insights-API/src/main/java/dev/frankheijden/insights/api/objects/chunk/ChunkCuboid.java
++++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/objects/chunk/ChunkCuboid.java
+@@ -8,7 +8,7 @@ import java.util.UUID;
+ 
+ public class ChunkCuboid {
+ 
+-    private static final Map<UUID, ChunkCuboid> maxCuboidCache = new HashMap<>();
++    private static final Map<UUID, ChunkCuboid> maxCuboidCache = new java.util.concurrent.ConcurrentHashMap<>();
+ 
+     private final ChunkVector min;
+     private final ChunkVector max;
+-- 
+2.49.0.windows.1
+

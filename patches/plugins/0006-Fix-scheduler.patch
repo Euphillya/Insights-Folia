@@ -1,7 +1,7 @@
-From 72c2607954eeddecdf2d5c0d464365479442d6c9 Mon Sep 17 00:00:00 2001
+From ad2498d3c1c4d4c85e3de9a62e3d004f4164da31 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sun, 26 Jan 2025 13:12:55 +0100
-Subject: [PATCH 6/6] Fix scheduler
+Date: Mon, 16 Jun 2025 03:21:14 +0200
+Subject: [PATCH 6/9] Fix scheduler
 
 ---
  .../insights/tasks/PlayerTrackerTask.java     | 33 ++++++++++---------
@@ -53,5 +53,5 @@ index 871003a..9e73126 100644
                  }
              }
 -- 
-2.47.1.windows.2
+2.49.0.windows.1
 

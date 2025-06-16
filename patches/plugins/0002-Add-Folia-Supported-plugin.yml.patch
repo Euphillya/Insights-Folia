@@ -1,7 +1,7 @@
-From 4eb7b2f159e838c5685a148e2ae29b4d9283830e Mon Sep 17 00:00:00 2001
+From ad433071305c18f442a5ddbdb8b84e95b0cfe4d2 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sun, 26 Jan 2025 13:12:54 +0100
-Subject: [PATCH 2/6] Add Folia Supported plugin.yml
+Date: Mon, 16 Jun 2025 03:21:13 +0200
+Subject: [PATCH 2/9] Add Folia Supported plugin.yml
 
 ---
  Insights/build.gradle.kts | 1 +
@@ -20,5 +20,5 @@ index a4387ce..bfe41c8 100644
          register("insights.info") {
              description = "Allows you to see information about insights"
 -- 
-2.47.1.windows.2
+2.49.0.windows.1
 

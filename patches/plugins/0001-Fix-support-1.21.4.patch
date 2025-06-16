@@ -1,7 +1,7 @@
-From 54f1936617de98ac94dbcef7de51d4692f050a47 Mon Sep 17 00:00:00 2001
+From c5184bc9199eae60f4c0d69ec988c01db98f54a6 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sun, 26 Jan 2025 13:12:54 +0100
-Subject: [PATCH 1/6] Fix support 1.21.4
+Date: Mon, 16 Jun 2025 03:21:13 +0200
+Subject: [PATCH 1/9] Fix support 1.21.4
 
 ---
  Insights-NMS/Current/build.gradle.kts                  |  2 +-
@@ -111,5 +111,5 @@ index c36a94f..bd9922a 100644
  }
  
 -- 
-2.47.1.windows.2
+2.49.0.windows.1
 
