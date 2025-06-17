@@ -61,4 +61,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Insights-Folia-Snapshot
-        path: Insights-Patchs/jars/*
+        path: Insights-Patchs/build/libs/*
