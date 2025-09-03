@@ -1,25 +1,17 @@
-From 2d134f7689bf7402a8683dac9f43956bccdc47e7 Mon Sep 17 00:00:00 2001
+From 7d1b0b5f53d779f274963bb98ccebbfbcce797bf Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Mon, 16 Jun 2025 03:32:46 +0200
-Subject: [PATCH 9/9] Fix concurrent exception with ChunkCuboid
+Date: Thu, 4 Sep 2025 00:03:44 +0200
+Subject: [PATCH 10/20] Patch Insights API src main java dev frankheijden in
 
 ---
- .../frankheijden/insights/api/objects/chunk/ChunkCuboid.java  | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../frankheijden/insights/api/objects/chunk/ChunkCuboid.java    | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/objects/chunk/ChunkCuboid.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/objects/chunk/ChunkCuboid.java
-index 4eeba9b..9bb39c7 100644
+index 4eeba9b..e42bb3c 100644
 --- a/Insights-API/src/main/java/dev/frankheijden/insights/api/objects/chunk/ChunkCuboid.java
 +++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/objects/chunk/ChunkCuboid.java
-@@ -1,14 +1,14 @@
- package dev.frankheijden.insights.api.objects.chunk;
- 
- import org.bukkit.World;
--import java.util.HashMap;
-+//import java.util.HashMap;
- import java.util.Map;
- import java.util.Objects;
- import java.util.UUID;
+@@ -8,7 +8,7 @@ import java.util.UUID;
  
  public class ChunkCuboid {
  
@@ -29,5 +21,5 @@ index 4eeba9b..9bb39c7 100644
      private final ChunkVector min;
      private final ChunkVector max;
 -- 
-2.49.0.windows.1
+2.50.1.windows.1
 

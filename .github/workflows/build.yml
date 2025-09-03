@@ -1,9 +1,7 @@
 name: Gradle Build
-on:
-  push:
-  pull_request:
-  schedule:
-    - cron: '0 0 * * 1'  # tous les lundis à minuit UTC
+on: [push, pull_request]
+
+permissions: write-all
 
 jobs:
   build:
@@ -41,7 +39,7 @@ jobs:
     - name: Execute Gradle build
       run: |
         cd Insights-Patchs
-        ./gradlew shadowJar --stacktrace
+        ./gradlew build --stacktrace -x test -x checkstyleMain --refresh-dependencies
 
     - uses: actions/upload-artifact@v4
       name: Archive Reports
@@ -61,4 +59,29 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Insights-Folia-Snapshot
-        path: Insights-Patchs/build/libs/*
+        path: Insights-Patchs/jars/*
+
+    - name: Create Release
+      if: github.event_name != 'pull_request'
+      uses: ncipollo/release-action@v1
+      with:
+        tag: ${{ env.tag }}
+        name: ${{ env.project_id_b }} - ${{ github.run_number }}
+        body: |
+          This release is automatically compiled by GitHub Actions
+          ### Commit Message
+          ${{ env.commit_msg }}
+        artifacts: Insights-Patchs/jars/*.jar
+        generateReleaseNotes: true
+        prerelease: ${{ env.pre }}
+        makeLatest: ${{ env.make_latest }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        replacesArtifacts: false
+
+env:
+  tag: build-${{ github.ref_name }}-${{ github.run_number }}
+  project_id_b: Insights-Folia
+  commit_id: ${{ github.sha }}
+  commit_msg: ${{ github.event.head_commit.message }}
+  pre: false
+  make_latest: true

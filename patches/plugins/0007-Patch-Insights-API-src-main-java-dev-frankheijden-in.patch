@@ -1,0 +1,68 @@
+From 336043a35744ddd33d4278757814f88eaab19d2c Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Thu, 4 Sep 2025 00:03:44 +0200
+Subject: [PATCH 07/20] Patch Insights API src main java dev frankheijden in
+
+---
+ .../insights/api/tasks/ScanTask.java          | 31 +++++++++++++++++--
+ 1 file changed, 28 insertions(+), 3 deletions(-)
+
+diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/tasks/ScanTask.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/tasks/ScanTask.java
+index fa76919..9d9217c 100644
+--- a/Insights-API/src/main/java/dev/frankheijden/insights/api/tasks/ScanTask.java
++++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/tasks/ScanTask.java
+@@ -51,7 +51,7 @@ public class ScanTask<R> implements Runnable {
+     private final AtomicBoolean completedExceptionally = new AtomicBoolean();
+     private final int chunkCount;
+     private long lastInfo = 0;
+-    private BukkitTask task;
++    private io.papermc.paper.threadedregions.scheduler.ScheduledTask task;
+ 
+     /**
+      * Creates a new ScanTask to scan a collection of ChunkPart's.
+@@ -370,8 +370,11 @@ public class ScanTask<R> implements Runnable {
+     }
+ 
+     private void start() {
+-        BukkitScheduler scheduler = plugin.getServer().getScheduler();
+-        task = scheduler.runTaskTimer(plugin, this, 0, plugin.getSettings().SCANS_ITERATION_INTERVAL_TICKS);
++        var scheduler =
++                plugin.getServer().getAsyncScheduler();
++        task = scheduler.runAtFixedRate(plugin, scheduledTask -> this.run(), 50L,
++                plugin.getSettings().SCANS_ITERATION_INTERVAL_TICKS * 50L, java.util.concurrent.TimeUnit.MILLISECONDS);
++
+     }
+ 
+     private void cancel() {
+@@ -416,6 +419,28 @@ public class ScanTask<R> implements Runnable {
+             var loc = chunkPart.getChunkLocation();
+             var world = loc.getWorld();
+ 
++            org.bukkit.Bukkit.getRegionScheduler().execute(this.plugin, world, loc.getX(), loc.getZ(), () -> {
++                CompletableFuture<Storage> storageFuture;
++                if (world.isChunkLoaded(loc.getX(), loc.getZ())) {
++                    storageFuture = executor
++                            .submit(world.getChunkAt(loc.getX(), loc.getZ()), chunkPart.getChunkCuboid(), this.options);
++                } else {
++                    storageFuture = executor
++                            .submit(loc.getWorld(), loc.getX(), loc.getZ(), chunkPart.getChunkCuboid(), this.options);
++                }
++
++                storageFuture.thenAccept((var) -> this.resultMerger.accept(var, loc, this.result)).thenRun(() -> {
++                    this.iterationChunks.incrementAndGet();
++                    this.chunks.incrementAndGet();
++                }).exceptionally((th) -> {
++                    if (!this.completedExceptionally.getAndSet(true)) {
++                        this.plugin.getLogger().log(Level.SEVERE, th, th::getMessage);
++                    }
++                    return null;
++                });
++            });
++            if (true) return;
++
+             CompletableFuture<Storage> storageFuture;
+             if (world.isChunkLoaded(loc.getX(), loc.getZ())) {
+                 storageFuture = executor.submit(
+-- 
+2.50.1.windows.1
+

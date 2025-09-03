@@ -1,0 +1,42 @@
+From 3616bae08b2a559aed87155205ca4468fbb9e85b Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Thu, 4 Sep 2025 00:03:46 +0200
+Subject: [PATCH 15/20] Patch Insights API src main java dev frankheijden in
+
+---
+ .../insights/api/concurrent/count/TickResetCount.java | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java
+index 7a7dc27..8847302 100644
+--- a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java
++++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java
+@@ -12,7 +12,7 @@ public class TickResetCount<T> {
+     private final int size;
+     private final Map<T, IntegerCount> counts;
+     private final ResetTask resetTask;
+-    private BukkitTask bukkitTask = null;
++    private io.papermc.paper.threadedregions.scheduler.ScheduledTask bukkitTask = null;
+ 
+     /**
+      * Constructs a new TickResetCount.
+@@ -34,11 +34,12 @@ public class TickResetCount<T> {
+             throw new IllegalStateException("ResetTask is already running!");
+         }
+ 
+-        this.bukkitTask = plugin.getServer().getScheduler().runTaskTimerAsynchronously(
++        this.bukkitTask = plugin.getServer().getAsyncScheduler().runAtFixedRate(
+                 plugin,
+-                resetTask,
+-                0,
+-                intervalTicks
++                scheduledTask -> resetTask.run(),
++                1 * 50,
++                intervalTicks * 50,
++                java.util.concurrent.TimeUnit.MILLISECONDS
+         );
+     }
+ 
+-- 
+2.50.1.windows.1
+

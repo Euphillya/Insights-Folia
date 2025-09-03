@@ -1,0 +1,34 @@
+From 04e45e012aa43618053fe36e1810973bb52e6977 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Thu, 4 Sep 2025 00:03:47 +0200
+Subject: [PATCH 18/20] Patch Insights src main java dev frankheijden insigh
+
+---
+ .../insights/commands/util/CommandSenderMapper.java   | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/Insights/src/main/java/dev/frankheijden/insights/commands/util/CommandSenderMapper.java b/Insights/src/main/java/dev/frankheijden/insights/commands/util/CommandSenderMapper.java
+index ff78c23..53fe364 100644
+--- a/Insights/src/main/java/dev/frankheijden/insights/commands/util/CommandSenderMapper.java
++++ b/Insights/src/main/java/dev/frankheijden/insights/commands/util/CommandSenderMapper.java
+@@ -37,6 +37,17 @@ public class CommandSenderMapper implements SenderMapper<CommandSourceStack, Com
+             public @Nullable Entity getExecutor() {
+                 return sender instanceof Entity entity ? entity : null;
+             }
++
++            @Override
++            public CommandSourceStack withLocation(Location location) {
++                return null;
++            }
++
++            @Override
++            public CommandSourceStack withExecutor(Entity executor) {
++                return null;
++            }
++
+         };
+     }
+ }
+-- 
+2.50.1.windows.1
+

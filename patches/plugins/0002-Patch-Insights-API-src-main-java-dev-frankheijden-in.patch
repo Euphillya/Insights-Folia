@@ -1,0 +1,32 @@
+From 218129892f31a396ef859b1da100e7eb0aae9364 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Thu, 4 Sep 2025 00:03:42 +0200
+Subject: [PATCH 02/20] Patch Insights API src main java dev frankheijden in
+
+---
+ .../insights/api/reflection/RTileEntityTypes.java             | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/reflection/RTileEntityTypes.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/reflection/RTileEntityTypes.java
+index e3034ec..13fbab9 100644
+--- a/Insights-API/src/main/java/dev/frankheijden/insights/api/reflection/RTileEntityTypes.java
++++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/reflection/RTileEntityTypes.java
+@@ -24,13 +24,13 @@ public class RTileEntityTypes {
+     static {
+         try {
+             var tileEntityTypesClazz = Class.forName(
+-                    "net.minecraft.world.level.block.entity.TileEntityTypes"
++                    "net.minecraft.world.level.block.entity.BlockEntityType"
+             );
+             var craftBlockDataClazz = Class.forName(
+                     "org.bukkit.craftbukkit.block.data.CraftBlockData"
+             );
+             var blockDataClazz = Class.forName(
+-                    "net.minecraft.world.level.block.state.IBlockData"
++                    "net.minecraft.world.level.block.state.BlockState"
+             );
+             MethodHandle isValidMethodHandle;
+             try {
+-- 
+2.50.1.windows.1
+

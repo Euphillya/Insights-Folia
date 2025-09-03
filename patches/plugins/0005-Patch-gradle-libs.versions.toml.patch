@@ -1,0 +1,41 @@
+From f23dcf4fc5470e5d754d7653e642ccff3554e9c2 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Thu, 4 Sep 2025 00:03:43 +0200
+Subject: [PATCH 05/20] Patch gradle libs.versions.toml
+
+---
+ gradle/libs.versions.toml | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
+index 6813cb2..8d603f6 100644
+--- a/gradle/libs.versions.toml
++++ b/gradle/libs.versions.toml
+@@ -1,11 +1,11 @@
+ [versions]
+ # libraries
+ semver = "0.10.2"
+-minecraft = "1.21.3-R0.1-SNAPSHOT"
++minecraft = "1.21.8-R0.1-SNAPSHOT"
+ paperLib = "1.0.8"
+-bStats = "3.0.0"
+-adventure = "4.17.0"
+-adventurePlatformBukkit = "4.3.3"
++bStats = "3.1.0"
++adventure = "4.24.0"
++adventurePlatformBukkit = "4.4.1"
+ assertj = "3.23.1"
+ mockito = "4.11.0"
+ jupiter = "5.9.1"
+@@ -17,7 +17,7 @@ cloud = "2.0.0-rc.2"
+ 
+ # plugins
+ shadow = "9.0.0-beta2"
+-userdev = "1.7.5"
++userdev = "2.0.0-beta.18"
+ pluginYml = "0.6.0"
+ 
+ [libraries]
+-- 
+2.50.1.windows.1
+

@@ -1,0 +1,70 @@
+From 9d639e087fa10c1a508d9e8d024e6e52400cfcdd Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Thu, 4 Sep 2025 00:03:46 +0200
+Subject: [PATCH 16/20] Patch Insights src main java dev frankheijden insigh
+
+---
+ .../dev/frankheijden/insights/Insights.java   | 24 ++++++++++---------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
+
+diff --git a/Insights/src/main/java/dev/frankheijden/insights/Insights.java b/Insights/src/main/java/dev/frankheijden/insights/Insights.java
+index 5cd57c0..b130732 100644
+--- a/Insights/src/main/java/dev/frankheijden/insights/Insights.java
++++ b/Insights/src/main/java/dev/frankheijden/insights/Insights.java
+@@ -83,8 +83,8 @@ public class Insights extends InsightsPlugin {
+     private ScanHistory scanHistory;
+     private ListenerManager listenerManager;
+     private InsightsPlaceholderExpansion placeholderExpansion;
+-    private BukkitTask playerTracker = null;
+-    private BukkitTask updateChecker = null;
++    private io.papermc.paper.threadedregions.scheduler.ScheduledTask playerTracker = null;
++    private io.papermc.paper.threadedregions.scheduler.ScheduledTask updateChecker = null;
+     private BukkitAudiences audiences = null;
+     private RedstoneUpdateCount redstoneUpdateCount = null;
+     private ChunkTeleport chunkTeleport;
+@@ -117,7 +117,7 @@ public class Insights extends InsightsPlugin {
+             ex.printStackTrace();
+         }
+ 
+-        getServer().getScheduler().runTaskLater(this, () -> {
++        getServer().getGlobalRegionScheduler().runDelayed(this, (scheduledTask) -> {
+             try {
+                 addonManager.loadAddons();
+             } catch (IOException ex) {
+@@ -379,11 +379,12 @@ public class Insights extends InsightsPlugin {
+         }
+ 
+         if (settings.CHUNK_SCANS_MODE == Settings.ChunkScanMode.ALWAYS) {
+-            playerTracker = getServer().getScheduler().runTaskTimerAsynchronously(
++            playerTracker = getServer().getAsyncScheduler().runAtFixedRate(
+                     this,
+-                    new PlayerTrackerTask(this),
+-                    0,
+-                    settings.CHUNK_SCANS_PLAYER_TRACKER_INTERVAL_TICKS
++                    scheduledTask -> new PlayerTrackerTask(this).run(),
++                    1 * 50,
++                    settings.CHUNK_SCANS_PLAYER_TRACKER_INTERVAL_TICKS * 50,
++                    java.util.concurrent.TimeUnit.MILLISECONDS
+             );
+         }
+ 
+@@ -392,11 +393,12 @@ public class Insights extends InsightsPlugin {
+         }
+ 
+         if (settings.UPDATE_CHECKER_ENABLED) {
+-            updateChecker = getServer().getScheduler().runTaskTimerAsynchronously(
++            updateChecker = getServer().getAsyncScheduler().runAtFixedRate(
+                     this,
+-                    new UpdateCheckerTask(this),
+-                    20,
+-                    20L * settings.UPDATE_CHECKER_INTERVAL_SECONDS
++                    scheduledTask -> new UpdateCheckerTask(this).run(),
++                    20 * 50,
++                    20L * settings.UPDATE_CHECKER_INTERVAL_SECONDS * 50,
++                    java.util.concurrent.TimeUnit.MILLISECONDS
+             );
+         }
+ 
+-- 
+2.50.1.windows.1
+

@@ -1,0 +1,25 @@
+From c1fc19d7e4c096dbf7e552953902d8c60dfccd77 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Thu, 4 Sep 2025 00:03:47 +0200
+Subject: [PATCH 19/20] Patch build.gradle.kts
+
+---
+ build.gradle.kts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build.gradle.kts b/build.gradle.kts
+index d722f44..63beab5 100644
+--- a/build.gradle.kts
++++ b/build.gradle.kts
+@@ -46,7 +46,7 @@ subprojects {
+         maven("https://repo.codemc.io/repository/maven-public")
+         maven("https://oss.sonatype.org/content/repositories/snapshots/")
+         maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+-        maven("https://papermc.io/repo/repository/maven-public/")
++        maven("https://repo.papermc.io/repository/maven-public/")
+         maven("https://libraries.minecraft.net")
+     }
+ 
+-- 
+2.50.1.windows.1
+

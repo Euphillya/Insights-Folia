@@ -1,0 +1,25 @@
+From fef88d659b07dac29b09eb8f6195908119d899a6 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Thu, 4 Sep 2025 00:03:46 +0200
+Subject: [PATCH 14/20] Patch Insights API src main java dev frankheijden in
+
+---
+ .../dev/frankheijden/insights/api/concurrent/ChunkTeleport.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/ChunkTeleport.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/ChunkTeleport.java
+index 4ab382e..ed1d581 100644
+--- a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/ChunkTeleport.java
++++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/ChunkTeleport.java
+@@ -30,7 +30,7 @@ public class ChunkTeleport {
+                 return;
+             }
+ 
+-            plugin.getServer().getScheduler().runTask(plugin, () -> {
++            plugin.getServer().getRegionScheduler().execute(plugin, world, x, z, () -> {
+                 int blockX = (x << 4) + 8;
+                 int blockZ = (z << 4) + 8;
+                 int blockY = world.getHighestBlockYAt(blockX, blockZ, HeightMap.MOTION_BLOCKING) + 1;
+-- 
+2.50.1.windows.1
+

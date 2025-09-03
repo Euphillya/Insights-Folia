@@ -1,24 +1,24 @@
-From f52f182ae770ea1ab44107bb8c0600b8297bd879 Mon Sep 17 00:00:00 2001
+From a4b0eaf0658488958c9912c2e303e5481149f0c2 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Mon, 16 Jun 2025 03:32:44 +0200
-Subject: [PATCH 2/9] Add Folia Supported plugin.yml
+Date: Thu, 4 Sep 2025 00:03:47 +0200
+Subject: [PATCH 17/20] Patch Insights build.gradle.kts
 
 ---
  Insights/build.gradle.kts | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/Insights/build.gradle.kts b/Insights/build.gradle.kts
-index a4387ce..bfe41c8 100644
+index a4387ce..30f163b 100644
 --- a/Insights/build.gradle.kts
 +++ b/Insights/build.gradle.kts
-@@ -36,6 +36,7 @@ bukkit {
+@@ -35,6 +35,7 @@ bukkit {
+     apiVersion = "1.21"
      website = "https://github.com/InsightsPlugin/Insights"
      softDepend = listOf("PlaceholderAPI")
-     authors = listOf("FrankHeijden")
 +    foliaSupported = true
+     authors = listOf("FrankHeijden")
      permissions {
          register("insights.info") {
-             description = "Allows you to see information about insights"
 -- 
-2.49.0.windows.1
+2.50.1.windows.1
 

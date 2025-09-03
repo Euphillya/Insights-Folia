@@ -1,17 +1,24 @@
-From 9acd216805949198651a89bbba218662e7f00b69 Mon Sep 17 00:00:00 2001
+From 9cf671ea0e83e4864d89724a66396a09d8cdde4f Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Mon, 16 Jun 2025 03:32:45 +0200
-Subject: [PATCH 6/9] Fix scheduler
+Date: Thu, 4 Sep 2025 00:03:45 +0200
+Subject: [PATCH 13/20] Patch Insights src main java dev frankheijden insigh
 
 ---
- .../insights/tasks/PlayerTrackerTask.java     | 33 ++++++++++---------
- 1 file changed, 17 insertions(+), 16 deletions(-)
+ .../insights/tasks/PlayerTrackerTask.java     | 35 ++++++++++---------
+ 1 file changed, 18 insertions(+), 17 deletions(-)
 
 diff --git a/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java b/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
-index 871003a..9e73126 100644
+index 9603f13..9e73126 100644
 --- a/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
 +++ b/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
-@@ -52,23 +52,24 @@ public class PlayerTrackerTask extends InsightsAsyncTask {
+@@ -46,29 +46,30 @@ public class PlayerTrackerTask extends InsightsAsyncTask {
+             return;
+         }
+ 
+-        plugin.getServer().getScheduler().runTask(plugin, () -> {
++        plugin.getServer().getGlobalRegionScheduler().execute(plugin, () -> {
+             long now = System.nanoTime();
+             for (ChunkLocation loc : locations) {
                  var world = loc.getWorld();
                  if (world.isChunkLoaded(loc.getX(), loc.getZ())) {
                      this.scanLocations.put(loc, now);
@@ -53,5 +60,5 @@ index 871003a..9e73126 100644
                  }
              }
 -- 
-2.49.0.windows.1
+2.50.1.windows.1
 

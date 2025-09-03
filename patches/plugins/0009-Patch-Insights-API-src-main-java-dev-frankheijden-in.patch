@@ -1,0 +1,27 @@
+From fa84385aacb6964f3221b5f314cffefe9c3a5377 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Thu, 4 Sep 2025 00:03:44 +0200
+Subject: [PATCH 09/20] Patch Insights API src main java dev frankheijden in
+
+---
+ .../dev/frankheijden/insights/api/config/Notifications.java   | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/config/Notifications.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/config/Notifications.java
+index c785a3c..4eb1a4c 100644
+--- a/Insights-API/src/main/java/dev/frankheijden/insights/api/config/Notifications.java
++++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/config/Notifications.java
+@@ -16,8 +16,8 @@ public class Notifications {
+     private final ProgressNotificationFactory progressNotificationFactory;
+     private final Messages messages;
+     private final Settings.NotificationType type;
+-    private final Map<UUID, Cache<Notification>> notificationMap = new HashMap<>();
+-    private final Map<UUID, Cache<ProgressNotification>> progressNotificationMap = new HashMap<>();
++    private final Map<UUID, Cache<Notification>> notificationMap = new java.util.concurrent.ConcurrentHashMap<>();
++    private final Map<UUID, Cache<ProgressNotification>> progressNotificationMap = new java.util.concurrent.ConcurrentHashMap<>();
+ 
+     /**
+      * Constructs a new Notifications Facade.
+-- 
+2.50.1.windows.1
+

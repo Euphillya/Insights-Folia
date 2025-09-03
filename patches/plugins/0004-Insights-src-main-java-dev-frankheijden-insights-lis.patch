@@ -1,0 +1,54 @@
+From 0f09beed20c967ac8869201480ad6b5545f80682 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Thu, 4 Sep 2025 00:03:43 +0200
+Subject: [PATCH 04/20] Insights src main java dev frankheijden insights lis
+
+---
+ .../insights/listeners/BlockListener.java     | 21 ++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
+
+diff --git a/Insights/src/main/java/dev/frankheijden/insights/listeners/BlockListener.java b/Insights/src/main/java/dev/frankheijden/insights/listeners/BlockListener.java
+index efd8624..66bfa8e 100644
+--- a/Insights/src/main/java/dev/frankheijden/insights/listeners/BlockListener.java
++++ b/Insights/src/main/java/dev/frankheijden/insights/listeners/BlockListener.java
+@@ -188,9 +188,13 @@ public class BlockListener extends InsightsListener {
+         var block = event.getBlock();
+         var itemStack = event.getItemStack();
+         if (itemStack != null && itemStack.getType() == Material.MILK_BUCKET) return;
++        var material = block.getType();
++        if (block.getBlockData() instanceof org.bukkit.block.data.Waterlogged waterlogged && waterlogged.isWaterlogged()) {
++            material = Material.WATER;
++        }
+ 
+         // Handle the removal
+-        handleRemoval(event.getPlayer(), block.getLocation(), ScanObject.of(block.getType()), 1, false);
++        handleRemoval(event.getPlayer(), block.getLocation(), ScanObject.of(material), 1, false);
+     }
+ 
+     private Block getTopNonGravityBlock(Block start) {
+@@ -338,13 +342,16 @@ public class BlockListener extends InsightsListener {
+             materials[i] = material;
+         }
+ 
+-        plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
++        plugin.getServer().getGlobalRegionScheduler().runDelayed(plugin, (scheduledTask) -> {
+             for (var i = 0; i < blocks.size(); i++) {
+-                var relative = blocks.get(i).getRelative(event.getDirection());
+-                var material = relative.getType();
+-                if (materials[i] == material) {
+-                    handleModification(relative.getLocation(), material, 1);
+-                }
++                final var iteration = i;
++                var relative = blocks.get(iteration).getRelative(event.getDirection());
++                plugin.getServer().getRegionScheduler().execute(plugin, relative.getLocation(), () -> {
++                    var material = relative.getType();
++                    if (materials[iteration] == material) {
++                        handleModification(relative.getLocation(), material, 1);
++                    }
++                });
+             }
+         }, 3L); // Ensures blocks have been updated after piston move
+     }
+-- 
+2.50.1.windows.1
+

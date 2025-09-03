@@ -1,0 +1,46 @@
+From 890a62bf61982c927a9ee3f4cd09b6ef1eb2d975 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Thu, 4 Sep 2025 00:03:45 +0200
+Subject: [PATCH 11/20] Patch Insights src main java dev frankheijden insigh
+
+---
+ .../insights/commands/CommandScan.java        | 22 ++++++++++---------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/Insights/src/main/java/dev/frankheijden/insights/commands/CommandScan.java b/Insights/src/main/java/dev/frankheijden/insights/commands/CommandScan.java
+index ea1ad92..9c0cfec 100644
+--- a/Insights/src/main/java/dev/frankheijden/insights/commands/CommandScan.java
++++ b/Insights/src/main/java/dev/frankheijden/insights/commands/CommandScan.java
+@@ -114,17 +114,19 @@ public class CommandScan extends InsightsCommand {
+             boolean displayZeros,
+             boolean groupByChunk
+     ) {
+-        Chunk chunk = player.getLocation().getChunk();
+-        World world = chunk.getWorld();
+-        int chunkX = chunk.getX();
+-        int chunkZ = chunk.getZ();
++        org.bukkit.Bukkit.getRegionScheduler().execute(plugin, player.getLocation(), () -> {
++            Chunk chunk = player.getLocation().getChunk();
++            World world = chunk.getWorld();
++            int chunkX = chunk.getX();
++            int chunkZ = chunk.getZ();
+ 
+-        LazyChunkPartRadiusIterator it = new LazyChunkPartRadiusIterator(world, chunkX, chunkZ, radius);
++            LazyChunkPartRadiusIterator it = new LazyChunkPartRadiusIterator(world, chunkX, chunkZ, radius);
+ 
+-        if (groupByChunk) {
+-            ScanTask.scanAndDisplayGroupedByChunk(plugin, player, it, it.getChunkCount(), options, items, false);
+-        } else {
+-            ScanTask.scanAndDisplay(plugin, player, it, it.getChunkCount(), options, items, displayZeros);
+-        }
++            if (groupByChunk) {
++                ScanTask.scanAndDisplayGroupedByChunk(plugin, player, it, it.getChunkCount(), options, items, false);
++            } else {
++                ScanTask.scanAndDisplay(plugin, player, it, it.getChunkCount(), options, items, displayZeros);
++            }
++        });
+     }
+ }
+-- 
+2.50.1.windows.1
+
