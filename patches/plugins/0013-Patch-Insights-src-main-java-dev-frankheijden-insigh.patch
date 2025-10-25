@@ -1,7 +1,7 @@
-From 9cf671ea0e83e4864d89724a66396a09d8cdde4f Mon Sep 17 00:00:00 2001
+From 609aadc282ae52f79dd39aa62ce71f7d74c56388 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:45 +0200
-Subject: [PATCH 13/20] Patch Insights src main java dev frankheijden insigh
+Date: Sat, 25 Oct 2025 20:12:01 +0200
+Subject: [PATCH 13/21] Patch Insights src main java dev frankheijden insigh
 
 ---
  .../insights/tasks/PlayerTrackerTask.java     | 35 ++++++++++---------

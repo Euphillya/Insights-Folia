@@ -1,7 +1,7 @@
-From d22afc926fc2a8124316745a1801b86ff1ec66a9 Mon Sep 17 00:00:00 2001
+From aeec56b6307105750d7e30900cac28555fe8b2ca Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:43 +0200
-Subject: [PATCH 06/20] Patch gradle wrapper gradle wrapper.properties
+Date: Sat, 25 Oct 2025 20:12:00 +0200
+Subject: [PATCH 06/21] Patch gradle wrapper gradle wrapper.properties
 
 ---
  gradle/wrapper/gradle-wrapper.properties | 2 +-

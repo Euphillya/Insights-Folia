@@ -1,7 +1,7 @@
-From 04e45e012aa43618053fe36e1810973bb52e6977 Mon Sep 17 00:00:00 2001
+From 6933c383f4a7b0838b91807840abd1184a840905 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:47 +0200
-Subject: [PATCH 18/20] Patch Insights src main java dev frankheijden insigh
+Date: Sat, 25 Oct 2025 20:12:02 +0200
+Subject: [PATCH 18/21] Patch Insights src main java dev frankheijden insigh
 
 ---
  .../insights/commands/util/CommandSenderMapper.java   | 11 +++++++++++

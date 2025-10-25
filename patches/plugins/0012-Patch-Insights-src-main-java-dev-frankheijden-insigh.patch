@@ -1,7 +1,7 @@
-From 7a10e15cc5ea2db2e564ba3b7788f8e291183e36 Mon Sep 17 00:00:00 2001
+From 63085aab4b9d87eea9f05e49c87c1bad83e17575 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:45 +0200
-Subject: [PATCH 12/20] Patch Insights src main java dev frankheijden insigh
+Date: Sat, 25 Oct 2025 20:12:01 +0200
+Subject: [PATCH 12/21] Patch Insights src main java dev frankheijden insigh
 
 ---
  .../insights/commands/CommandScanRegion.java  | 25 +++++++++++--------

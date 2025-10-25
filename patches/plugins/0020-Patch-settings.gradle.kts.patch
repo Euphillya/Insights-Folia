@@ -1,7 +1,7 @@
-From 7894f1a8fafa90e0dfb2dbb89e1d0c5531d0963c Mon Sep 17 00:00:00 2001
+From cfa3454c1159c3c531cc8982e0decd93b1367d04 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:47 +0200
-Subject: [PATCH 20/20] Patch settings.gradle.kts
+Date: Sat, 25 Oct 2025 20:12:03 +0200
+Subject: [PATCH 20/21] Patch settings.gradle.kts
 
 ---
  settings.gradle.kts | 2 +-

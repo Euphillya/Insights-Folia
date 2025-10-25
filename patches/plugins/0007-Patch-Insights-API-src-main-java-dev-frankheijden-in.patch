@@ -1,7 +1,7 @@
-From 336043a35744ddd33d4278757814f88eaab19d2c Mon Sep 17 00:00:00 2001
+From e7db9581a73b0cc3e0433ea249045fd0f4d84ed1 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:44 +0200
-Subject: [PATCH 07/20] Patch Insights API src main java dev frankheijden in
+Date: Sat, 25 Oct 2025 20:12:00 +0200
+Subject: [PATCH 07/21] Patch Insights API src main java dev frankheijden in
 
 ---
  .../insights/api/tasks/ScanTask.java          | 31 +++++++++++++++++--

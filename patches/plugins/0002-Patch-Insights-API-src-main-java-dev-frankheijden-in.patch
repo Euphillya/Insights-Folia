@@ -1,7 +1,7 @@
-From 218129892f31a396ef859b1da100e7eb0aae9364 Mon Sep 17 00:00:00 2001
+From 2ef668cd221ffbad2d337dbab1e9992b1c856970 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:42 +0200
-Subject: [PATCH 02/20] Patch Insights API src main java dev frankheijden in
+Date: Sat, 25 Oct 2025 20:11:59 +0200
+Subject: [PATCH 02/21] Patch Insights API src main java dev frankheijden in
 
 ---
  .../insights/api/reflection/RTileEntityTypes.java             | 4 ++--

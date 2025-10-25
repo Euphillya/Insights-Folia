@@ -1,7 +1,7 @@
-From d79a935c3e5e893d40edad468014ae5184807095 Mon Sep 17 00:00:00 2001
+From 9bee21cc5165a348cab7cb589e23b536988eff8b Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:42 +0200
-Subject: [PATCH 03/20] Patch Insights NMS Current src main java dev frankhe
+Date: Sat, 25 Oct 2025 20:11:59 +0200
+Subject: [PATCH 03/21] Patch Insights NMS Current src main java dev frankhe
 
 ---
  .../insights/nms/impl/InsightsNMSImpl.java    | 74 ++++++++++++-------

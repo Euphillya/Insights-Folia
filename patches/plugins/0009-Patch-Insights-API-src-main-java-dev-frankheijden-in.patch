@@ -1,7 +1,7 @@
-From fa84385aacb6964f3221b5f314cffefe9c3a5377 Mon Sep 17 00:00:00 2001
+From 07d077123b9452ffe1e57eefdb4224355ee71515 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:44 +0200
-Subject: [PATCH 09/20] Patch Insights API src main java dev frankheijden in
+Date: Sat, 25 Oct 2025 20:12:00 +0200
+Subject: [PATCH 09/21] Patch Insights API src main java dev frankheijden in
 
 ---
  .../dev/frankheijden/insights/api/config/Notifications.java   | 4 ++--

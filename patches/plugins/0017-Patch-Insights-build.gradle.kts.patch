@@ -1,7 +1,7 @@
-From a4b0eaf0658488958c9912c2e303e5481149f0c2 Mon Sep 17 00:00:00 2001
+From 22f91a9311ca1c98983713bfcd511d3c1610af7f Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:47 +0200
-Subject: [PATCH 17/20] Patch Insights build.gradle.kts
+Date: Sat, 25 Oct 2025 20:12:02 +0200
+Subject: [PATCH 17/21] Patch Insights build.gradle.kts
 
 ---
  Insights/build.gradle.kts | 1 +

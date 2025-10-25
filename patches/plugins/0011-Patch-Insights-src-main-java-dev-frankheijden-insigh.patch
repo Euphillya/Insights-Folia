@@ -1,7 +1,7 @@
-From 890a62bf61982c927a9ee3f4cd09b6ef1eb2d975 Mon Sep 17 00:00:00 2001
+From 1563bdfc3e6e233e36c2c627676d78d03d1aad2b Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:45 +0200
-Subject: [PATCH 11/20] Patch Insights src main java dev frankheijden insigh
+Date: Sat, 25 Oct 2025 20:12:01 +0200
+Subject: [PATCH 11/21] Patch Insights src main java dev frankheijden insigh
 
 ---
  .../insights/commands/CommandScan.java        | 22 ++++++++++---------

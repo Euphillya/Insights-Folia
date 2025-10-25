@@ -1,7 +1,7 @@
-From c1fc19d7e4c096dbf7e552953902d8c60dfccd77 Mon Sep 17 00:00:00 2001
+From d0c83fecfdd76df4b40d37f2ca547a5d5966c94d Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:47 +0200
-Subject: [PATCH 19/20] Patch build.gradle.kts
+Date: Sat, 25 Oct 2025 20:12:03 +0200
+Subject: [PATCH 19/21] Patch build.gradle.kts
 
 ---
  build.gradle.kts | 2 +-

@@ -1,7 +1,7 @@
-From 6adffab3a22a2aa1fa63dad19897106ff03a27dd Mon Sep 17 00:00:00 2001
+From 4cfc4f3e66de86675fd39445cf332123a80fe7ff Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:44 +0200
-Subject: [PATCH 08/20] Patch Insights API src main java dev frankheijden in
+Date: Sat, 25 Oct 2025 20:12:00 +0200
+Subject: [PATCH 08/21] Patch Insights API src main java dev frankheijden in
 
 ---
  .../config/notifications/BossBarNotification.java  | 14 +++++++++++---

@@ -1,7 +1,7 @@
-From 7d1b0b5f53d779f274963bb98ccebbfbcce797bf Mon Sep 17 00:00:00 2001
+From 75fa93334c9fe54f4b40b071f6ef48068657fdde Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Thu, 4 Sep 2025 00:03:44 +0200
-Subject: [PATCH 10/20] Patch Insights API src main java dev frankheijden in
+Date: Sat, 25 Oct 2025 20:12:01 +0200
+Subject: [PATCH 10/21] Patch Insights API src main java dev frankheijden in
 
 ---
  .../frankheijden/insights/api/objects/chunk/ChunkCuboid.java    | 2 +-
