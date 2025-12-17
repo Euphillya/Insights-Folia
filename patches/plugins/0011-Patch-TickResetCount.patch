@@ -1,17 +1,25 @@
-From f9d51e375def9a4fda58ecea95fa53a67e040036 Mon Sep 17 00:00:00 2001
+From 6aad55d9c33c5640bceeb5874ff4a428a1a52558 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sat, 25 Oct 2025 20:12:02 +0200
-Subject: [PATCH 15/21] Patch Insights API src main java dev frankheijden in
+Date: Wed, 17 Dec 2025 18:59:02 +0100
+Subject: [PATCH 11/13] Patch TickResetCount
 
 ---
- .../insights/api/concurrent/count/TickResetCount.java | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ .../api/concurrent/count/TickResetCount.java         | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java
-index 7a7dc27..8847302 100644
+index 7a7dc27..d3a3ad6 100644
 --- a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java
 +++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/count/TickResetCount.java
-@@ -12,7 +12,7 @@ public class TickResetCount<T> {
+@@ -4,6 +4,7 @@ import dev.frankheijden.insights.api.InsightsPlugin;
+ import org.bukkit.scheduler.BukkitTask;
+ import java.util.Map;
+ import java.util.concurrent.ConcurrentHashMap;
++import java.util.concurrent.TimeUnit;
+ 
+ public class TickResetCount<T> {
+ 
+@@ -12,7 +13,7 @@ public class TickResetCount<T> {
      private final int size;
      private final Map<T, IntegerCount> counts;
      private final ResetTask resetTask;
@@ -20,7 +28,7 @@ index 7a7dc27..8847302 100644
  
      /**
       * Constructs a new TickResetCount.
-@@ -34,11 +34,12 @@ public class TickResetCount<T> {
+@@ -34,11 +35,12 @@ public class TickResetCount<T> {
              throw new IllegalStateException("ResetTask is already running!");
          }
  
@@ -31,12 +39,12 @@ index 7a7dc27..8847302 100644
 -                0,
 -                intervalTicks
 +                scheduledTask -> resetTask.run(),
-+                1 * 50,
-+                intervalTicks * 50,
-+                java.util.concurrent.TimeUnit.MILLISECONDS
++                50L,
++                intervalTicks *50L,
++                TimeUnit.MILLISECONDS
          );
      }
  
 -- 
-2.50.1.windows.1
+2.52.0.windows.1
 

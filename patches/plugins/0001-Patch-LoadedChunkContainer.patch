@@ -1,0 +1,47 @@
+From 6e3005a02d3caaad985e8bf8cf38cc6ecb29704e Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Wed, 17 Dec 2025 18:35:46 +0100
+Subject: [PATCH 01/13] Patch LoadedChunkContainer
+
+---
+ .../concurrent/containers/LoadedChunkContainer.java    | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/containers/LoadedChunkContainer.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/containers/LoadedChunkContainer.java
+index 5e3fa95..68e24b9 100644
+--- a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/containers/LoadedChunkContainer.java
++++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/containers/LoadedChunkContainer.java
+@@ -1,10 +1,12 @@
+ package dev.frankheijden.insights.api.concurrent.containers;
+ 
++import dev.frankheijden.insights.api.InsightsPlugin;
+ import dev.frankheijden.insights.api.concurrent.ScanOptions;
+ import dev.frankheijden.insights.api.objects.chunk.ChunkCuboid;
+ import dev.frankheijden.insights.nms.core.ChunkEntity;
+ import dev.frankheijden.insights.nms.core.ChunkSection;
+ import dev.frankheijden.insights.nms.core.InsightsNMS;
++import org.bukkit.Bukkit;
+ import org.bukkit.Chunk;
+ import org.jetbrains.annotations.NotNull;
+ import org.jetbrains.annotations.Nullable;
+@@ -24,11 +26,15 @@ public class LoadedChunkContainer extends ChunkContainer {
+ 
+     @Override
+     public void getChunkSections(Consumer<@Nullable ChunkSection> sectionConsumer) {
+-        nms.getLoadedChunkSections(chunk, sectionConsumer);
++        Bukkit.getRegionScheduler().run(InsightsPlugin.getInstance(), chunk.getWorld(), chunkX, chunkZ, scheduledTask -> {
++            nms.getLoadedChunkSections(chunk, sectionConsumer);
++        });
+     }
+ 
+     @Override
+     public void getChunkEntities(Consumer<@NotNull ChunkEntity> entityConsumer) {
+-        nms.getLoadedChunkEntities(chunk, entityConsumer);
++        Bukkit.getRegionScheduler().run(InsightsPlugin.getInstance(), chunk.getWorld(), chunkX, chunkZ, scheduledTask -> {
++            nms.getLoadedChunkEntities(chunk, entityConsumer);
++        });
+     }
+ }
+-- 
+2.52.0.windows.1
+

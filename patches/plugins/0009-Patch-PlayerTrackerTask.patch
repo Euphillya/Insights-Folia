@@ -1,17 +1,17 @@
-From 609aadc282ae52f79dd39aa62ce71f7d74c56388 Mon Sep 17 00:00:00 2001
+From b55c7d3da8acd5f4c30336e25c160b26bcf52044 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sat, 25 Oct 2025 20:12:01 +0200
-Subject: [PATCH 13/21] Patch Insights src main java dev frankheijden insigh
+Date: Wed, 17 Dec 2025 18:55:41 +0100
+Subject: [PATCH 09/13] Patch PlayerTrackerTask
 
 ---
- .../insights/tasks/PlayerTrackerTask.java     | 35 ++++++++++---------
- 1 file changed, 18 insertions(+), 17 deletions(-)
+ .../insights/tasks/PlayerTrackerTask.java     | 34 ++++++++++---------
+ 1 file changed, 18 insertions(+), 16 deletions(-)
 
-diff --git a/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java b/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
-index 9603f13..9e73126 100644
---- a/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
-+++ b/Insights/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
-@@ -46,29 +46,30 @@ public class PlayerTrackerTask extends InsightsAsyncTask {
+diff --git a/Insights-Core/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java b/Insights-Core/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
+index 9603f13..d26079a 100644
+--- a/Insights-Core/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
++++ b/Insights-Core/src/main/java/dev/frankheijden/insights/tasks/PlayerTrackerTask.java
+@@ -46,29 +46,31 @@ public class PlayerTrackerTask extends InsightsAsyncTask {
              return;
          }
  
@@ -22,7 +22,7 @@ index 9603f13..9e73126 100644
                  var world = loc.getWorld();
                  if (world.isChunkLoaded(loc.getX(), loc.getZ())) {
                      this.scanLocations.put(loc, now);
--
+ 
 -                    var chunk = world.getChunkAt(loc.getX(), loc.getZ());
 -                    plugin.getChunkContainerExecutor().submit(chunk, ScanOptions.all()).whenComplete((s, e) -> {
 -                        if (s == null) {
@@ -36,7 +36,7 @@ index 9603f13..9e73126 100644
 -                                                + " (future errors with the same stacktrace are suppressed)",
 -                                        e
 -                                );
-+                    org.bukkit.Bukkit.getRegionScheduler().execute(plugin, world, loc.getX(), loc.getZ(), () -> {
++                    plugin.getServer().getRegionScheduler().run(plugin, loc.getWorld(), loc.getX(), loc.getZ(), scheduledTask -> {
 +                        var chunk = world.getChunkAt(loc.getX(), loc.getZ());
 +                        plugin.getChunkContainerExecutor().submit(chunk, ScanOptions.all()).whenComplete((s, e) -> {
 +                            if (s == null) {
@@ -60,5 +60,5 @@ index 9603f13..9e73126 100644
                  }
              }
 -- 
-2.50.1.windows.1
+2.52.0.windows.1
 

@@ -1,0 +1,24 @@
+From dc08700fae7c157b684dfdcb1a4bec7ef799a584 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Wed, 17 Dec 2025 19:02:09 +0100
+Subject: [PATCH 13/13] Patch Core build.gradle.kts
+
+---
+ Insights-Core/build.gradle.kts | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Insights-Core/build.gradle.kts b/Insights-Core/build.gradle.kts
+index c1c5f0b..ea0f3de 100644
+--- a/Insights-Core/build.gradle.kts
++++ b/Insights-Core/build.gradle.kts
+@@ -37,6 +37,7 @@ bukkit {
+     website = "https://github.com/InsightsPlugin/Insights"
+     softDepend = listOf("PlaceholderAPI")
+     authors = listOf("FrankHeijden", "Jsinco")
++    foliaSupported = true
+     permissions {
+         register("insights.info") {
+             description = "Allows you to see information about insights"
+-- 
+2.52.0.windows.1
+

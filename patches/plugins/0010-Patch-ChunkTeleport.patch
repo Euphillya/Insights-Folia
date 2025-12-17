@@ -1,14 +1,14 @@
-From cd675fceb041cc5111e4f861240613c1b1e9ff3c Mon Sep 17 00:00:00 2001
+From 7e0b142617a8ddd5870c6848acd437f1f4780f89 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sat, 25 Oct 2025 20:12:01 +0200
-Subject: [PATCH 14/21] Patch Insights API src main java dev frankheijden in
+Date: Wed, 17 Dec 2025 18:57:00 +0100
+Subject: [PATCH 10/13] Patch ChunkTeleport
 
 ---
  .../dev/frankheijden/insights/api/concurrent/ChunkTeleport.java | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/ChunkTeleport.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/ChunkTeleport.java
-index 4ab382e..ed1d581 100644
+index 4ab382e..ab3ae2c 100644
 --- a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/ChunkTeleport.java
 +++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/ChunkTeleport.java
 @@ -30,7 +30,7 @@ public class ChunkTeleport {
@@ -16,10 +16,10 @@ index 4ab382e..ed1d581 100644
              }
  
 -            plugin.getServer().getScheduler().runTask(plugin, () -> {
-+            plugin.getServer().getRegionScheduler().execute(plugin, world, x, z, () -> {
++            plugin.getServer().getRegionScheduler().run(plugin,  world, x, z, (scheduledTask) -> {
                  int blockX = (x << 4) + 8;
                  int blockZ = (z << 4) + 8;
                  int blockY = world.getHighestBlockYAt(blockX, blockZ, HeightMap.MOTION_BLOCKING) + 1;
 -- 
-2.50.1.windows.1
+2.52.0.windows.1
 

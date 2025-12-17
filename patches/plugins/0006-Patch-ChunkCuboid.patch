@@ -1,7 +1,7 @@
-From 75fa93334c9fe54f4b40b071f6ef48068657fdde Mon Sep 17 00:00:00 2001
+From 9d5008edce9637dea77a0f7fc29c5079e644c4bb Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sat, 25 Oct 2025 20:12:01 +0200
-Subject: [PATCH 10/21] Patch Insights API src main java dev frankheijden in
+Date: Wed, 17 Dec 2025 18:51:05 +0100
+Subject: [PATCH 06/13] Patch ChunkCuboid
 
 ---
  .../frankheijden/insights/api/objects/chunk/ChunkCuboid.java    | 2 +-
@@ -21,5 +21,5 @@ index 4eeba9b..e42bb3c 100644
      private final ChunkVector min;
      private final ChunkVector max;
 -- 
-2.50.1.windows.1
+2.52.0.windows.1
 

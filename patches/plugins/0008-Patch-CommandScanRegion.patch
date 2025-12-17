@@ -1,0 +1,55 @@
+From 6dc16c4946aab2a010ccad1455c456b4c0af40b1 Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Wed, 17 Dec 2025 18:53:34 +0100
+Subject: [PATCH 08/13] Patch CommandScanRegion
+
+---
+ .../insights/commands/CommandScanRegion.java  | 25 +++++++++++--------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
+
+diff --git a/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScanRegion.java b/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScanRegion.java
+index 1d6de60..ef2ca5e 100644
+--- a/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScanRegion.java
++++ b/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScanRegion.java
+@@ -11,6 +11,7 @@ import dev.frankheijden.insights.api.objects.wrappers.ScanObject;
+ import dev.frankheijden.insights.api.reflection.RTileEntityTypes;
+ import dev.frankheijden.insights.api.tasks.ScanTask;
+ import dev.frankheijden.insights.api.utils.Constants;
++import org.bukkit.Bukkit;
+ import org.bukkit.entity.Player;
+ import org.incendo.cloud.annotations.Argument;
+ import org.incendo.cloud.annotations.Command;
+@@ -86,17 +87,19 @@ public class CommandScanRegion extends InsightsCommand {
+             boolean displayZeros,
+             boolean groupByChunk
+     ) {
+-        Optional<Region> optionalRegion = plugin.getAddonManager().getRegion(player.getLocation());
+-        if (optionalRegion.isEmpty()) {
+-            plugin.getMessages().getMessage(Messages.Key.SCANREGION_NO_REGION).sendTo(player);
+-            return;
+-        }
++        Bukkit.getRegionScheduler().run(plugin, player.getLocation(), scheduledTask -> {
++            Optional<Region> optionalRegion = plugin.getAddonManager().getRegion(player.getLocation());
++            if (optionalRegion.isEmpty()) {
++                plugin.getMessages().getMessage(Messages.Key.SCANREGION_NO_REGION).sendTo(player);
++                return;
++            }
+ 
+-        List<ChunkPart> parts = optionalRegion.get().toChunkParts();
+-        if (groupByChunk) {
+-            ScanTask.scanAndDisplayGroupedByChunk(plugin, player, parts, parts.size(), options, items, false);
+-        } else {
+-            ScanTask.scanAndDisplay(plugin, player, parts, parts.size(), options, items, displayZeros);
+-        }
++            List<ChunkPart> parts = optionalRegion.get().toChunkParts();
++            if (groupByChunk) {
++                ScanTask.scanAndDisplayGroupedByChunk(plugin, player, parts, parts.size(), options, items, false);
++            } else {
++                ScanTask.scanAndDisplay(plugin, player, parts, parts.size(), options, items, displayZeros);
++            }
++        });
+     }
+ }
+-- 
+2.52.0.windows.1
+

@@ -1,17 +1,25 @@
-From 1563bdfc3e6e233e36c2c627676d78d03d1aad2b Mon Sep 17 00:00:00 2001
+From d78302f59ac7e3566c03d3f766d4ef2587a7f086 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sat, 25 Oct 2025 20:12:01 +0200
-Subject: [PATCH 11/21] Patch Insights src main java dev frankheijden insigh
+Date: Wed, 17 Dec 2025 18:52:39 +0100
+Subject: [PATCH 07/13] Patch CommandScan
 
 ---
- .../insights/commands/CommandScan.java        | 22 ++++++++++---------
- 1 file changed, 12 insertions(+), 10 deletions(-)
+ .../insights/commands/CommandScan.java        | 23 +++++++++++--------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
 
-diff --git a/Insights/src/main/java/dev/frankheijden/insights/commands/CommandScan.java b/Insights/src/main/java/dev/frankheijden/insights/commands/CommandScan.java
-index ea1ad92..9c0cfec 100644
---- a/Insights/src/main/java/dev/frankheijden/insights/commands/CommandScan.java
-+++ b/Insights/src/main/java/dev/frankheijden/insights/commands/CommandScan.java
-@@ -114,17 +114,19 @@ public class CommandScan extends InsightsCommand {
+diff --git a/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScan.java b/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScan.java
+index ea1ad92..c74d000 100644
+--- a/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScan.java
++++ b/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScan.java
+@@ -9,6 +9,7 @@ import dev.frankheijden.insights.api.reflection.RTileEntityTypes;
+ import dev.frankheijden.insights.api.tasks.ScanTask;
+ import dev.frankheijden.insights.api.util.LazyChunkPartRadiusIterator;
+ import dev.frankheijden.insights.api.utils.Constants;
++import org.bukkit.Bukkit;
+ import org.bukkit.Chunk;
+ import org.bukkit.World;
+ import org.bukkit.entity.Player;
+@@ -114,17 +115,19 @@ public class CommandScan extends InsightsCommand {
              boolean displayZeros,
              boolean groupByChunk
      ) {
@@ -19,7 +27,7 @@ index ea1ad92..9c0cfec 100644
 -        World world = chunk.getWorld();
 -        int chunkX = chunk.getX();
 -        int chunkZ = chunk.getZ();
-+        org.bukkit.Bukkit.getRegionScheduler().execute(plugin, player.getLocation(), () -> {
++        Bukkit.getRegionScheduler().run(plugin, player.getLocation(), scheduledTask -> {
 +            Chunk chunk = player.getLocation().getChunk();
 +            World world = chunk.getWorld();
 +            int chunkX = chunk.getX();
@@ -42,5 +50,5 @@ index ea1ad92..9c0cfec 100644
      }
  }
 -- 
-2.50.1.windows.1
+2.52.0.windows.1
 

@@ -1,7 +1,7 @@
-From 07d077123b9452ffe1e57eefdb4224355ee71515 Mon Sep 17 00:00:00 2001
+From 9eb4125c45f03036aee08b22ba5bb4c31c9a8bc5 Mon Sep 17 00:00:00 2001
 From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Sat, 25 Oct 2025 20:12:00 +0200
-Subject: [PATCH 09/21] Patch Insights API src main java dev frankheijden in
+Date: Wed, 17 Dec 2025 18:50:33 +0100
+Subject: [PATCH 05/13] Patch Notifications
 
 ---
  .../dev/frankheijden/insights/api/config/Notifications.java   | 4 ++--
@@ -23,5 +23,5 @@ index c785a3c..4eb1a4c 100644
      /**
       * Constructs a new Notifications Facade.
 -- 
-2.50.1.windows.1
+2.52.0.windows.1
 

@@ -1,0 +1,25 @@
+From 6e46246fee04c94754a6048c72e516bc38c383cc Mon Sep 17 00:00:00 2001
+From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
+Date: Wed, 17 Dec 2025 18:39:26 +0100
+Subject: [PATCH 02/13] Patch BlockListener
+
+---
+ .../java/dev/frankheijden/insights/listeners/BlockListener.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Insights-Core/src/main/java/dev/frankheijden/insights/listeners/BlockListener.java b/Insights-Core/src/main/java/dev/frankheijden/insights/listeners/BlockListener.java
+index 819e9f2..81e7845 100644
+--- a/Insights-Core/src/main/java/dev/frankheijden/insights/listeners/BlockListener.java
++++ b/Insights-Core/src/main/java/dev/frankheijden/insights/listeners/BlockListener.java
+@@ -356,7 +356,7 @@ public class BlockListener extends InsightsListener {
+             materials[i] = material;
+         }
+ 
+-        plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
++        plugin.getServer().getRegionScheduler().runDelayed( plugin,event.getBlock().getLocation(), (scheduledTask) -> {
+             for (var i = 0; i < blocks.size(); i++) {
+                 var relative = blocks.get(i).getRelative(event.getDirection());
+                 var material = relative.getType();
+-- 
+2.52.0.windows.1
+
