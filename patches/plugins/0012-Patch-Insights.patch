@@ -1,7 +1,7 @@
-From 1ea588c5d7d5e37026bfd1e6742fee0072300eca Mon Sep 17 00:00:00 2001
-From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Wed, 17 Dec 2025 19:01:22 +0100
-Subject: [PATCH 12/13] Patch Insights
+From ba56dd56ab82fdbd066d3c7a677c145f463b5829 Mon Sep 17 00:00:00 2001
+From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
+Date: Sat, 17 Jan 2026 13:43:36 +0100
+Subject: [PATCH 12/14] Patch Insights
 
 ---
  .../dev/frankheijden/insights/Insights.java   | 25 +++++++++++--------

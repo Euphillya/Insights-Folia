@@ -1,7 +1,7 @@
-From 7e0b142617a8ddd5870c6848acd437f1f4780f89 Mon Sep 17 00:00:00 2001
-From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Wed, 17 Dec 2025 18:57:00 +0100
-Subject: [PATCH 10/13] Patch ChunkTeleport
+From 71fcc9ef6904b4faefb20955ba30f4ee89a6f76f Mon Sep 17 00:00:00 2001
+From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
+Date: Sat, 17 Jan 2026 13:43:35 +0100
+Subject: [PATCH 10/14] Patch ChunkTeleport
 
 ---
  .../dev/frankheijden/insights/api/concurrent/ChunkTeleport.java | 2 +-

@@ -1,7 +1,7 @@
-From b55c7d3da8acd5f4c30336e25c160b26bcf52044 Mon Sep 17 00:00:00 2001
-From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Wed, 17 Dec 2025 18:55:41 +0100
-Subject: [PATCH 09/13] Patch PlayerTrackerTask
+From a69f3c8f5f4d34e7af58e7d5a9bf6d697a6ca692 Mon Sep 17 00:00:00 2001
+From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
+Date: Sat, 17 Jan 2026 13:43:35 +0100
+Subject: [PATCH 09/14] Patch PlayerTrackerTask
 
 ---
  .../insights/tasks/PlayerTrackerTask.java     | 34 ++++++++++---------

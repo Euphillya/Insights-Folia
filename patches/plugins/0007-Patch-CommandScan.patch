@@ -1,7 +1,7 @@
-From d78302f59ac7e3566c03d3f766d4ef2587a7f086 Mon Sep 17 00:00:00 2001
-From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Wed, 17 Dec 2025 18:52:39 +0100
-Subject: [PATCH 07/13] Patch CommandScan
+From 4d5ff97b078daa9e74ee3d096e4528f333418a58 Mon Sep 17 00:00:00 2001
+From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
+Date: Sat, 17 Jan 2026 13:43:34 +0100
+Subject: [PATCH 07/14] Patch CommandScan
 
 ---
  .../insights/commands/CommandScan.java        | 23 +++++++++++--------

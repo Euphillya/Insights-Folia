@@ -1,0 +1,69 @@
+From 7a86d52392b194e3e83f71a9e8348c7bba2cef7c Mon Sep 17 00:00:00 2001
+From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
+Date: Sat, 17 Jan 2026 13:57:14 +0100
+Subject: [PATCH 14/14] try fix #2
+
+---
+ .../api/concurrent/containers/UnloadedChunkContainer.java | 8 +++++++-
+ .../frankheijden/insights/commands/CommandScanCache.java  | 6 ++++--
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/containers/UnloadedChunkContainer.java b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/containers/UnloadedChunkContainer.java
+index 37c4e84..d5c2523 100644
+--- a/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/containers/UnloadedChunkContainer.java
++++ b/Insights-API/src/main/java/dev/frankheijden/insights/api/concurrent/containers/UnloadedChunkContainer.java
+@@ -29,7 +29,13 @@ public class UnloadedChunkContainer extends ChunkContainer {
+ 
+     @Override
+     public void getChunkSections(Consumer<@Nullable ChunkSection> sectionConsumer) {
+-        nms.getUnloadedChunkSections(world, chunkX, chunkZ, sectionConsumer);
++        if (org.bukkit.Bukkit.isOwnedByCurrentRegion(world, chunkX, chunkZ)) {
++            nms.getUnloadedChunkSections(world, chunkX, chunkZ, sectionConsumer);
++        } else {
++            org.bukkit.Bukkit.getRegionScheduler().run(dev.frankheijden.insights.api.InsightsPlugin.getInstance(), world, chunkX, chunkZ, (scheduledTask) -> {
++                nms.getUnloadedChunkSections(world, chunkX, chunkZ, sectionConsumer);
++            });
++        }
+     }
+ 
+     @Override
+diff --git a/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScanCache.java b/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScanCache.java
+index 69a047e..d338379 100644
+--- a/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScanCache.java
++++ b/Insights-Core/src/main/java/dev/frankheijden/insights/commands/CommandScanCache.java
+@@ -64,6 +64,7 @@ public class CommandScanCache extends InsightsCommand {
+     @Permission("insights.scancache.clear")
+     private void handleCacheClear(Player player) {
+         Location loc = player.getLocation();
++        plugin.getServer().getRegionScheduler().run(plugin, loc, scheduledTask -> {
+         Optional<Region> optionalRegion = plugin.getAddonManager().getRegion(loc);
+ 
+         // If a region is present, try to delete cache of the region.
+@@ -78,7 +79,7 @@ public class CommandScanCache extends InsightsCommand {
+                 .orElse("chunk");
+         plugin.getMessages().getMessage(Messages.Key.SCANCACHE_CLEARED).addTemplates(
+                 Messages.tagOf("area", areaName)
+-        ).sendTo(player);
++        ).sendTo(player);});
+     }
+ 
+     /**
+@@ -86,6 +87,7 @@ public class CommandScanCache extends InsightsCommand {
+      */
+     public void handleScan(Player player, Set<? extends ScanObject<?>> items, boolean displayZeros) {
+         Location loc = player.getLocation();
++        plugin.getServer().getRegionScheduler().run(plugin, loc, scheduledTask -> {
+         Optional<Region> optionalRegion = plugin.getAddonManager().getRegion(loc);
+         Optional<Storage> optionalStorage;
+ 
+@@ -130,6 +132,6 @@ public class CommandScanCache extends InsightsCommand {
+             message.sendTo(player, 0);
+         } else {
+             plugin.getMessages().getMessage(Messages.Key.SCANCACHE_NO_CACHE).sendTo(player);
+-        }
++        }});
+     }
+ }
+-- 
+2.52.0.windows.1
+

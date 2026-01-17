@@ -1,7 +1,7 @@
-From 9eb4125c45f03036aee08b22ba5bb4c31c9a8bc5 Mon Sep 17 00:00:00 2001
-From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Wed, 17 Dec 2025 18:50:33 +0100
-Subject: [PATCH 05/13] Patch Notifications
+From 8f6b9ded44579ae7f98132c6af6c03ae9bde0d7b Mon Sep 17 00:00:00 2001
+From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
+Date: Sat, 17 Jan 2026 13:43:34 +0100
+Subject: [PATCH 05/14] Patch Notifications
 
 ---
  .../dev/frankheijden/insights/api/config/Notifications.java   | 4 ++--

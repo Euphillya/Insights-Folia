@@ -1,7 +1,7 @@
-From 6e46246fee04c94754a6048c72e516bc38c383cc Mon Sep 17 00:00:00 2001
-From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Wed, 17 Dec 2025 18:39:26 +0100
-Subject: [PATCH 02/13] Patch BlockListener
+From 62d6179796e13735a64312bcaea0208013506927 Mon Sep 17 00:00:00 2001
+From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
+Date: Sat, 17 Jan 2026 13:43:33 +0100
+Subject: [PATCH 02/14] Patch BlockListener
 
 ---
  .../java/dev/frankheijden/insights/listeners/BlockListener.java | 2 +-

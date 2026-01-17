@@ -1,7 +1,7 @@
-From 9d5008edce9637dea77a0f7fc29c5079e644c4bb Mon Sep 17 00:00:00 2001
-From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Wed, 17 Dec 2025 18:51:05 +0100
-Subject: [PATCH 06/13] Patch ChunkCuboid
+From e065518f78ec6ae8ed4b6220024fede38fcf75bf Mon Sep 17 00:00:00 2001
+From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
+Date: Sat, 17 Jan 2026 13:43:34 +0100
+Subject: [PATCH 06/14] Patch ChunkCuboid
 
 ---
  .../frankheijden/insights/api/objects/chunk/ChunkCuboid.java    | 2 +-

@@ -1,7 +1,7 @@
-From 6dc16c4946aab2a010ccad1455c456b4c0af40b1 Mon Sep 17 00:00:00 2001
-From: Euphyllia Bierque <bierque.euphyllia@gmail.com>
-Date: Wed, 17 Dec 2025 18:53:34 +0100
-Subject: [PATCH 08/13] Patch CommandScanRegion
+From 46c614cee861c526f006322aa8376114322ca3a9 Mon Sep 17 00:00:00 2001
+From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
+Date: Sat, 17 Jan 2026 13:43:35 +0100
+Subject: [PATCH 08/14] Patch CommandScanRegion
 
 ---
  .../insights/commands/CommandScanRegion.java  | 25 +++++++++++--------
