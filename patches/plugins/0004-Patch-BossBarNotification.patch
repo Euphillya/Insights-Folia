@@ -1,6 +1,6 @@
-From 0280ab4814ef163549886b5f2441c22102ee7522 Mon Sep 17 00:00:00 2001
+From 71718e5822df531aedacd1900affd1f4d85918a9 Mon Sep 17 00:00:00 2001
 From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
-Date: Sat, 17 Jan 2026 13:43:34 +0100
+Date: Mon, 27 Apr 2026 19:26:20 +0200
 Subject: [PATCH 04/14] Patch BossBarNotification
 
 ---

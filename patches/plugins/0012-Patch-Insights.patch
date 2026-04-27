@@ -1,6 +1,6 @@
-From ba56dd56ab82fdbd066d3c7a677c145f463b5829 Mon Sep 17 00:00:00 2001
+From d64c15c8b69002ac826253fa2159c2715cff237f Mon Sep 17 00:00:00 2001
 From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
-Date: Sat, 17 Jan 2026 13:43:36 +0100
+Date: Mon, 27 Apr 2026 19:26:22 +0200
 Subject: [PATCH 12/14] Patch Insights
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH 12/14] Patch Insights
  1 file changed, 14 insertions(+), 11 deletions(-)
 
 diff --git a/Insights-Core/src/main/java/dev/frankheijden/insights/Insights.java b/Insights-Core/src/main/java/dev/frankheijden/insights/Insights.java
-index cfe67e7..cbf69fb 100644
+index 4fa58c9..28c47c9 100644
 --- a/Insights-Core/src/main/java/dev/frankheijden/insights/Insights.java
 +++ b/Insights-Core/src/main/java/dev/frankheijden/insights/Insights.java
 @@ -58,6 +58,7 @@ import java.nio.file.Files;

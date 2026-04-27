@@ -1,6 +1,6 @@
-From 2def9d3fe44ba738166dc5540b505a8e2559ff56 Mon Sep 17 00:00:00 2001
+From 39b8c60063eb0ebbbfc806c54314ee33bd7b864f Mon Sep 17 00:00:00 2001
 From: Bierque Euphyllia <bierque.euphyllia@gmail.com>
-Date: Sat, 17 Jan 2026 13:43:36 +0100
+Date: Mon, 27 Apr 2026 19:26:22 +0200
 Subject: [PATCH 13/14] Patch Core build.gradle.kts
 
 ---
